@@ -9,7 +9,9 @@ dconf-show:
 
 dconf-apply:
   dconf load / < keybindings.conf
-  dconf load / < general.conf
+
+dconf-apply-ubuntu:
+  dconf load / < ubuntu-general.conf
 
 dconf-reset-keybindings:
   dconf reset /org/gnome/desktop/wm/keybindings/
