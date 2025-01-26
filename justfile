@@ -4,8 +4,8 @@ default:
   just --list
 
 dconf-show:
- dconf dump / > /tmp/dconf/user.conf
- cat /tmp/dconf/user.conf
+  dconf dump / > /tmp/user.conf
+  cat /tmp/user.conf
 
 dconf-apply:
   dconf load / < keybindings.conf
