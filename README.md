@@ -1,4 +1,4 @@
-# gnome Config
+# My gnome config
 
 This is my local config for [gnome](https://www.gnome.org/).
 
