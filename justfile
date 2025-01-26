@@ -9,12 +9,18 @@ dconf-show:
 
 dconf-apply:
   dconf load / < keybindings.conf
+  dconf load / < interface.conf
 
 dconf-apply-ubuntu:
   dconf load / < ubuntu-general.conf
 
 dconf-reset-keybindings:
-  dconf reset /org/gnome/desktop/wm/keybindings/
+  dconf reset /org/gnome/desktop/wm/keybindings/ /org/gnome/desktop/wm/keybindings/ \
+    /org/gnome/mutter/keybindings/ /org/gnome/settings-daemon/plugins/media-keys/
+
+dconf-reset-all:
+  dconf reset /org/gnome/desktop/interface/ /org/gnome/desktop/wm/keybindings/ \
+    /org/gnome/desktop/wm/keybindings/ /org/gnome/mutter/keybindings/ /org/gnome/settings-daemon/plugins/media-keys/
 
 install-extensions-manager:
   #!/bin/bash
