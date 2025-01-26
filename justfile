@@ -22,4 +22,10 @@ install-extensions-manager:
     sudo apt-get install gnome-shell-extension-manager
   elif [ "{{os}}" = "Arch Linux" ]; then
     sudo pacman -S extension-manager
-  fi
+  i
+
+install: install-extensions-manager
+
+config: dconf-apply
+
+unset-config: dconf-reset-keybindings
