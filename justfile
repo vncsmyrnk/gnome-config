@@ -1,3 +1,5 @@
+os := `cat /etc/os-release | grep "^NAME=" | cut -d "=" -f2 | tr -d '"'`
+
 default:
   just --list
 
@@ -11,3 +13,11 @@ dconf-apply:
 
 dconf-reset-keybindings:
   dconf reset /org/gnome/desktop/wm/keybindings/
+
+install-extensions-manager:
+  #!/bin/bash
+  if [ "{{os}}" = "Debian GNU/Linux" ] || [ "{{os}}" = "Ubuntu" ]; then
+    sudo apt-get install gnome-shell-extension-manager
+  elif [ "{{os}}" = "Arch Linux" ]; then
+    sudo pacman -S extension-manager
+  fi

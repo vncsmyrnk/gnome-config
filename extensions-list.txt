@@ -1,0 +1,2 @@
+https://extensions.gnome.org/extension/1176/argos/
+https://extensions.gnome.org/extension/4548/tactile/
