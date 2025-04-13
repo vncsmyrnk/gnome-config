@@ -1,5 +1,7 @@
 os := `cat /etc/os-release | grep "^NAME=" | cut -d "=" -f2 | tr -d '"'`
 
+on_update_scripts_path := "${SU_SCRIPTS_ON_UPDATE_PATH:-$HOME/.config/util/scripts/on-update}"
+
 default:
   just --list
 
@@ -21,6 +23,21 @@ dconf-reset-keybindings:
 dconf-reset-all:
   dconf reset /org/gnome/desktop/interface/ /org/gnome/desktop/wm/keybindings/ \
     /org/gnome/desktop/wm/keybindings/ /org/gnome/mutter/keybindings/ /org/gnome/settings-daemon/plugins/media-keys/
+
+config-scripts:
+  stow -t {{on_update_scripts_path}} scripts
+
+unset-config-scripts:
+  stow -D -t {{on_update_scripts_path}} scripts
+
+install-argos:
+  #!/bin/sh
+  [ -d /usr/local/stow ] || {
+    rm -rf /tmp/argos
+    git clone https://github.com/p-e-w/argos /tmp/argos
+    sudo cp -r /tmp/argos /usr/local/stow
+  }
+  stow -t ~/.local/share/gnome-shell/extensions -d /usr/local/stow argos --ignore=README
 
 install-extensions-manager:
   #!/bin/bash
@@ -45,8 +62,8 @@ install-font:
     -iname "*.ttf" \
     -exec sudo cp {} $FONT_PATH \;
 
-install: install-extensions-manager
+install: install-extensions-manager install-argos
 
-config: dconf-apply
+config: dconf-apply config-scripts
 
-unset-config: dconf-reset-keybindings
+unset-config: dconf-reset-keybindings unset-config-scripts
