@@ -12,6 +12,7 @@ dconf-show:
 dconf-apply:
   dconf load / < keybindings.conf
   dconf load / < interface.conf
+  dconf load / < shell.conf
 
 dconf-apply-ubuntu:
   dconf load / < ubuntu-general.conf
@@ -22,7 +23,8 @@ dconf-reset-keybindings:
 
 dconf-reset-all:
   dconf reset /org/gnome/desktop/interface/ /org/gnome/desktop/wm/keybindings/ \
-    /org/gnome/desktop/wm/keybindings/ /org/gnome/mutter/keybindings/ /org/gnome/settings-daemon/plugins/media-keys/
+    /org/gnome/desktop/wm/keybindings/ /org/gnome/mutter/keybindings/ \
+    /org/gnome/settings-daemon/plugins/media-keys/ /org/gnome/shell
 
 config-scripts:
   stow -t {{on_update_scripts_path}} scripts
