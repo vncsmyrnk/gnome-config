@@ -68,4 +68,4 @@ install: install-extensions-manager install-argos
 
 config: dconf-apply config-scripts
 
-unset-config: dconf-reset-keybindings unset-config-scripts
+unset-config: dconf-reset-all unset-config-scripts
