@@ -18,13 +18,18 @@ dconf-apply-ubuntu:
   dconf load / < ubuntu-general.conf
 
 dconf-reset-keybindings:
-  dconf reset /org/gnome/desktop/wm/keybindings/ /org/gnome/desktop/wm/keybindings/ \
-    /org/gnome/mutter/keybindings/ /org/gnome/settings-daemon/plugins/media-keys/
+  dconf reset -f /org/gnome/desktop/wm/keybindings/
+  dconf reset -f /org/gnome/desktop/wm/keybindings/
+  dconf reset -f /org/gnome/mutter/keybindings/
+  dconf reset -f /org/gnome/settings-daemon/plugins/media-keys/
 
 dconf-reset-all:
-  dconf reset /org/gnome/desktop/interface/ /org/gnome/desktop/wm/keybindings/ \
-    /org/gnome/desktop/wm/keybindings/ /org/gnome/mutter/keybindings/ \
-    /org/gnome/settings-daemon/plugins/media-keys/ /org/gnome/shell
+  dconf reset -f /org/gnome/desktop/interface/
+  dconf reset -f /org/gnome/desktop/wm/keybindings/
+  dconf reset -f /org/gnome/desktop/wm/keybindings/
+  dconf reset -f /org/gnome/mutter/keybindings/
+  dconf reset -f /org/gnome/settings-daemon/plugins/media-keys/
+  dconf reset -f /org/gnome/shell/
 
 config-scripts:
   stow -t {{on_update_scripts_path}} scripts
