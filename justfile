@@ -39,11 +39,13 @@ unset-config-scripts:
 
 install-argos:
   #!/bin/sh
-  [ -d /usr/local/stow ] || {
+  [ -d /usr/local/stow/argos ] || {
     rm -rf /tmp/argos
     git clone https://github.com/p-e-w/argos /tmp/argos
-    sudo cp -r /tmp/argos /usr/local/stow
+    mkdir -p /usr/local/stow/argos
+    sudo cp -r /tmp/argos/* /usr/local/stow/argos
   }
+  mkdir -p ~/.local/share/gnome-shell/extensions
   stow -t ~/.local/share/gnome-shell/extensions -d /usr/local/stow argos --ignore=README
 
 install-extensions-manager:
