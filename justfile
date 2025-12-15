@@ -13,6 +13,7 @@ dconf-apply:
   dconf load / < keybindings.conf
   dconf load / < interface.conf
   dconf load / < shell.conf
+  dconf load / < power.conf
 
 dconf-apply-ubuntu:
   dconf load / < ubuntu-general.conf
