@@ -31,7 +31,7 @@ focus_recent() {
   window_id=$(
     bustctl_dbus_list_windows_ids_ordered |
       jq -r '.data[0]' |
-      jq -r --arg regexp "$exclude_window_regexp" '.[] | select(.title | test($regexp; "i") | not) | .id' |
+      jq -r --arg regexp "$exclude_window_regexp" '.[] | select(.wm_class | test($regexp; "i") | not) | .id' |
       tac |
       grep -v "$exclude_window_regexp" |
       sed -n "${steps}p"
@@ -47,7 +47,7 @@ focus_recent() {
 main() {
   steps="$1"
   if [[ -z "$steps" ]]; then
-    echo "usage: $(basename "$0") <steps>"
+    echo "usage: $(basename "$0") <steps> [--exclude-regexp]"
     exit 1
   fi
   shift
