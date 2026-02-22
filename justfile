@@ -32,11 +32,22 @@ dconf-reset-all:
   dconf reset -f /org/gnome/settings-daemon/plugins/media-keys/
   dconf reset -f /org/gnome/shell/
 
+install-window-calls-extension:
+  curl -L https://extensions.gnome.org/extension-data/window-callsdomandoman.xyz.v20.shell-extension.zip -o /tmp/window-call-extension.zip
+  gnome-extensions install /tmp/window-call-extension.zip
+  gnome-extensions enable window-calls@domandoman.xyz
+
 config-scripts:
   stow -t {{on_update_scripts_path}} scripts
 
 unset-config-scripts:
   stow -D -t {{on_update_scripts_path}} scripts
+
+config-bin:
+  stow -t "$HOME/.local/bin" bin --no-folding
+
+unset-config-bin:
+  stow -D -t "$HOME/.local/bin" bin
 
 install-argos:
   #!/bin/sh
@@ -72,8 +83,8 @@ install-font:
     -iname "*.ttf" \
     -exec sudo cp {} $FONT_PATH \;
 
-install: install-extensions-manager install-argos
+install: install-extensions-manager install-window-calls-extension install-argos
 
-config: dconf-apply config-scripts
+config: dconf-apply config-scripts config-bin
 
 unset-config: dconf-reset-all unset-config-scripts

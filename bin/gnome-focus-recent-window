@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+
+# vim: set ft=sh:
+
+# This leverages the GNOME Window Calls extension to raise opened applications via DBus.
+# The extension is required for this script to work as intended.
+# Extension: https://github.com/ickyicky/window-calls
+
+bustctl_dbus_list_windows_ids_ordered() {
+  busctl --user call \
+    org.gnome.Shell \
+    /org/gnome/Shell/Extensions/Windows \
+    org.gnome.Shell.Extensions.Windows \
+    List \
+    --json=short
+}
+
+bustctl_dbus_activate_window() {
+  busctl --user call \
+    org.gnome.Shell \
+    /org/gnome/Shell/Extensions/Windows \
+    org.gnome.Shell.Extensions.Windows \
+    Activate \
+    u "$1"
+}
+
+focus_recent() {
+  steps="$1"
+  exclude_window_regexp="$2"
+
+  window_id=$(
+    bustctl_dbus_list_windows_ids_ordered |
+      jq -r '.data[0]' |
+      jq -r --arg regexp "$exclude_window_regexp" '.[] | select(.title | test($regexp; "i") | not) | .id' |
+      tac |
+      grep -v "$exclude_window_regexp" |
+      sed -n "${steps}p"
+  )
+
+  if [[ -z "$window_id" ]]; then
+    exit 1
+  fi
+
+  bustctl_dbus_activate_window "$window_id"
+}
+
+main() {
+  steps="$1"
+  if [[ -z "$steps" ]]; then
+    echo "usage: $(basename "$0") <steps>"
+    exit 1
+  fi
+  shift
+
+  exclude_window_regexp="^$"
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+    --exclude-regexp)
+      exclude_window_regexp="$2"
+      shift 2
+      ;;
+    --exclude-regexp=*)
+      exclude_window_regexp="${1#*=}"
+      shift
+      ;;
+    *)
+      break
+      ;;
+    esac
+  done
+
+  focus_recent "$steps" "$exclude_window_regexp"
+}
+
+main "$@"
