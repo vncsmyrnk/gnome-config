@@ -21,7 +21,6 @@ dconf-apply-ubuntu:
 
 dconf-reset-keybindings:
   dconf reset -f /org/gnome/desktop/wm/keybindings/
-  dconf reset -f /org/gnome/desktop/wm/keybindings/
   dconf reset -f /org/gnome/mutter/keybindings/
   dconf reset -f /org/gnome/settings-daemon/plugins/media-keys/
 
@@ -33,32 +32,10 @@ dconf-reset-all:
   dconf reset -f /org/gnome/shell/
 
 install-window-calls-extension:
-  curl -L https://extensions.gnome.org/extension-data/window-callsdomandoman.xyz.v20.shell-extension.zip -o /tmp/window-call-extension.zip
-  gnome-extensions install /tmp/window-call-extension.zip
-  gnome-extensions enable window-calls@domandoman.xyz
+  @./extensions/window-calls/install.sh
 
-config-scripts:
-  stow -t {{on_update_scripts_path}} scripts
-
-unset-config-scripts:
-  stow -D -t {{on_update_scripts_path}} scripts
-
-config-bin:
-  stow -t "$HOME/.local/bin" bin --no-folding
-
-unset-config-bin:
-  stow -D -t "$HOME/.local/bin" bin
-
-install-argos:
-  #!/bin/sh
-  [ -d /usr/local/stow/argos ] || {
-    rm -rf /tmp/argos
-    git clone https://github.com/p-e-w/argos /tmp/argos
-    mkdir -p /usr/local/stow/argos
-    sudo cp -r /tmp/argos/* /usr/local/stow/argos
-  }
-  mkdir -p ~/.local/share/gnome-shell/extensions
-  stow -t ~/.local/share/gnome-shell/extensions -d /usr/local/stow argos --ignore=README
+install-argos-extension:
+  @./extensions/argos/install.sh
 
 install-extensions-manager:
   #!/bin/bash
@@ -83,8 +60,13 @@ install-font:
     -iname "*.ttf" \
     -exec sudo cp {} $FONT_PATH \;
 
-install: install-extensions-manager install-window-calls-extension install-argos
+install: install-extensions-manager install-window-calls-extension install-argos-extension
 
-config: dconf-apply config-scripts config-bin
+config: dconf-apply
+  stow -t "$HOME/.local/bin" bin --no-folding
+  rm -rf "{{on_update_scripts_path}}/update-argos.sh"
+  ln -s extensions/argos/update.sh "{{on_update_scripts_path}}/update-argos.sh"
 
-unset-config: dconf-reset-all unset-config-scripts
+unset-config: dconf-reset-all
+  stow -D -t "$HOME/.local/bin" bin --no-folding
+  rm -rf "{{on_update_scripts_path}}/update-argos.sh"
