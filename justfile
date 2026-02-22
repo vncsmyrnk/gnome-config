@@ -14,6 +14,7 @@ dconf-apply:
   dconf load / < interface.conf
   dconf load / < shell.conf
   dconf load / < power.conf
+  dconf load / < defaults.conf
 
 dconf-apply-ubuntu:
   dconf load / < ubuntu-general.conf
@@ -26,7 +27,6 @@ dconf-reset-keybindings:
 
 dconf-reset-all:
   dconf reset -f /org/gnome/desktop/interface/
-  dconf reset -f /org/gnome/desktop/wm/keybindings/
   dconf reset -f /org/gnome/desktop/wm/keybindings/
   dconf reset -f /org/gnome/mutter/keybindings/
   dconf reset -f /org/gnome/settings-daemon/plugins/media-keys/
