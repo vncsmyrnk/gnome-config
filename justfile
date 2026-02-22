@@ -45,7 +45,7 @@ install-extensions-manager:
     sudo pacman -S extension-manager
   fi
 
-install-font:
+install-adwaita-font:
   #!/bin/bash
   FONT_PATH=/usr/local/share/fonts/adwaita
   if [ -d  $FONT_PATH ]; then
@@ -60,7 +60,7 @@ install-font:
     -iname "*.ttf" \
     -exec sudo cp {} $FONT_PATH \;
 
-install: install-extensions-manager install-window-calls-extension install-argos-extension
+install: install-extensions-manager install-window-calls-extension install-argos-extension install-adwaita-font config
 
 config: dconf-apply
   stow -t "$HOME/.local/bin" bin --no-folding
