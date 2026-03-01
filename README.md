@@ -2,15 +2,19 @@
 
 This is my local config for [gnome](https://www.gnome.org/).
 
+## Extensions
+
+Due to GNOME not having a standard way of scripting the installation of extensions, Nix and its great community built a way to make the extension installation process reproducible. The _flake_ at [extensions](extensions) handles this.
+
 ## Install
 
-This project uses [just](https://github.com/casey/just) for the installation.
+This project uses [just](https://github.com/casey/just) and [Nix](https://nixos.org) for the installation.
 
 ```bash
 just install
 ```
 
-Considering `gnome-shell-extension-manager` is already installed, you can just run:
+Considering the dependencies are already installed, you can just run:
 
 ```bash
 just config

@@ -29,12 +29,6 @@ dconf-reset-all:
   dconf reset -f /org/gnome/settings-daemon/plugins/media-keys/
   dconf reset -f /org/gnome/shell/
 
-install-window-calls-extension:
-  @./extensions/window-calls/install.sh
-
-install-argos-extension:
-  @./extensions/argos/install.sh
-
 install-extensions-manager:
   #!/bin/bash
   if [ "{{os}}" = "Debian GNU/Linux" ] || [ "{{os}}" = "Ubuntu" ]; then
@@ -42,6 +36,15 @@ install-extensions-manager:
   elif [ "{{os}}" = "Arch Linux" ]; then
     sudo pacman -S extension-manager
   fi
+
+install-extensions:
+  cd extensions && nix run .#
+
+update-extensions:
+  cd extensions && nix flake update && nix run .#
+
+clear-extensions:
+  rm -rf ~/.local/share/gnome-shell/extensions
 
 install-adwaita-font:
   #!/bin/bash
@@ -58,7 +61,7 @@ install-adwaita-font:
     -iname "*.ttf" \
     -exec sudo cp {} $FONT_PATH \;
 
-install: install-extensions-manager install-window-calls-extension install-argos-extension install-adwaita-font config
+install: install-extensions install-extensions-manager install-adwaita-font config
 
 config: dconf-apply
   stow -t "$HOME/.local/bin" bin --no-folding
