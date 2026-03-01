@@ -4,18 +4,13 @@ default:
   just --list
 
 dconf-show:
-  dconf dump / > /tmp/user.conf
-  cat /tmp/user.conf
+  dconf dump / | tee /tmp/user.conf
 
 dconf-apply:
-  dconf load / < keybindings.conf
-  dconf load / < interface.conf
-  dconf load / < shell.conf
-  dconf load / < power.conf
-  dconf load / < defaults.conf
+  find dconf | xargs -I{} sh -c 'dconf load / < {}'
 
 dconf-apply-ubuntu:
-  dconf load / < ubuntu-general.conf
+  dconf load / < dconf/ubuntu-general.conf
 
 dconf-reset-keybindings:
   dconf reset -f /org/gnome/desktop/wm/keybindings/
@@ -65,8 +60,5 @@ install: install-extensions install-extensions-manager install-adwaita-font conf
 
 config: dconf-apply
   stow -t "$HOME/.local/bin" bin --no-folding
-  util config add extensions/argos/update.sh -p scripts/on-update -t update-argos.sh
 
 unset-config: dconf-reset-all
-  stow -D -t "$HOME/.local/bin" bin --no-folding
-  util config remove scripts/on-update/update-argos --force

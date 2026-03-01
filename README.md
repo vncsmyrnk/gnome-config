@@ -1,6 +1,6 @@
-# My gnome config
+# My GNOME config
 
-This is my local config for [gnome](https://www.gnome.org/).
+This is my local config for [GNOME](https://www.gnome.org/).
 
 ## Extensions
 
@@ -23,11 +23,11 @@ just config
 For applying the configuration files only without cloning the repo:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/vncsmyrnk/gnome-config/refs/heads/main/keybindings.conf | dconf load /
+curl -sSL https://raw.githubusercontent.com/vncsmyrnk/gnome-config/refs/heads/main/dconf/keybindings.conf | dconf load /
 ```
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/vncsmyrnk/gnome-config/refs/heads/main/interface.conf | dconf load /
+curl -sSL https://raw.githubusercontent.com/vncsmyrnk/gnome-config/refs/heads/main/dconf/interface.conf | dconf load /
 ```
 
 > [!WARNING]
