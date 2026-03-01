@@ -1,7 +1,5 @@
 os := `cat /etc/os-release | grep "^NAME=" | cut -d "=" -f2 | tr -d '"'`
 
-on_update_scripts_path := "${SU_SCRIPTS_ON_UPDATE_PATH:-$HOME/.config/util/scripts/on-update}"
-
 default:
   just --list
 
@@ -64,9 +62,8 @@ install: install-extensions-manager install-window-calls-extension install-argos
 
 config: dconf-apply
   stow -t "$HOME/.local/bin" bin --no-folding
-  rm -rf "{{on_update_scripts_path}}/update-argos.sh"
-  ln -s extensions/argos/update.sh "{{on_update_scripts_path}}/update-argos.sh"
+  util config add extensions/argos/update.sh -p scripts/on-update -t update-argos.sh
 
 unset-config: dconf-reset-all
   stow -D -t "$HOME/.local/bin" bin --no-folding
-  rm -rf "{{on_update_scripts_path}}/update-argos.sh"
+  util config remove scripts/on-update/update-argos --force
