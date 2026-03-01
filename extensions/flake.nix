@@ -1,5 +1,5 @@
 {
-  description = "Pure Flake GNOME Extensions Management";
+  description = "GNOME Extensions Management";
 
   inputs = { nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; };
 
