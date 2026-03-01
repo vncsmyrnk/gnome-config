@@ -20,8 +20,10 @@ dconf-reset-keybindings:
 dconf-reset-all:
   dconf reset -f /org/gnome/desktop/interface/
   dconf reset -f /org/gnome/desktop/wm/keybindings/
-  dconf reset -f /org/gnome/mutter/keybindings/
+  dconf reset -f /org/gnome/desktop/wm/preferences/
+  dconf reset -f /org/gnome/mutter/
   dconf reset -f /org/gnome/settings-daemon/plugins/media-keys/
+  dconf reset -f /org/gnome/desktop/default-applications/terminal/
   dconf reset -f /org/gnome/shell/
 
 install-extensions-manager:
@@ -62,3 +64,4 @@ config: dconf-apply
   stow -t "$HOME/.local/bin" bin --no-folding
 
 unset-config: dconf-reset-all
+  stow -D -t "$HOME/.local/bin" bin
