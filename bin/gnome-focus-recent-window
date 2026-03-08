@@ -25,7 +25,7 @@ bustctl_dbus_activate_window() {
 }
 
 help() {
-  echo "Usage: $(basename "$0") [--steps <steps>] [--current-wm-class] [--exclude-regexp <regexp>]"
+  echo "Usage: gnome-focus-recent-window [--steps <steps>] [--current-wm-class] [--exclude-regexp <regexp>]"
   echo ""
   echo "Leverages GNOME Window Calls extension to raise opened application windows via DBus."
   echo ""

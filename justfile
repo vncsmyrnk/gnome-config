@@ -6,26 +6,6 @@ default:
 dconf-show:
   dconf dump / | tee /tmp/user.conf
 
-dconf-apply:
-  find dconf | xargs -I{} sh -c 'dconf load / < {}'
-
-dconf-apply-ubuntu:
-  dconf load / < dconf/ubuntu-general.conf
-
-dconf-reset-keybindings:
-  dconf reset -f /org/gnome/desktop/wm/keybindings/
-  dconf reset -f /org/gnome/mutter/keybindings/
-  dconf reset -f /org/gnome/settings-daemon/plugins/media-keys/
-
-dconf-reset-all:
-  dconf reset -f /org/gnome/desktop/interface/
-  dconf reset -f /org/gnome/desktop/wm/keybindings/
-  dconf reset -f /org/gnome/desktop/wm/preferences/
-  dconf reset -f /org/gnome/mutter/
-  dconf reset -f /org/gnome/settings-daemon/plugins/media-keys/
-  dconf reset -f /org/gnome/desktop/default-applications/terminal/
-  dconf reset -f /org/gnome/shell/
-
 install-extensions-manager:
   #!/bin/bash
   if [ "{{os}}" = "Debian GNU/Linux" ] || [ "{{os}}" = "Ubuntu" ]; then
@@ -33,12 +13,6 @@ install-extensions-manager:
   elif [ "{{os}}" = "Arch Linux" ]; then
     sudo pacman -S extension-manager
   fi
-
-install-extensions:
-  cd extensions && nix run .#
-
-update-extensions:
-  cd extensions && nix flake update && nix run .#
 
 clear-extensions:
   rm -rf ~/.local/share/gnome-shell/extensions
@@ -60,8 +34,9 @@ install-adwaita-font:
 
 install: install-extensions install-extensions-manager install-adwaita-font config
 
-config: dconf-apply
-  stow -t "$HOME/.local/bin" bin --no-folding
+config:
+  nix profile add
+  nix run .#
 
-unset-config: dconf-reset-all
-  stow -D -t "$HOME/.local/bin" bin
+unset-config: clear-extensions
+  nix profile remove gnome
