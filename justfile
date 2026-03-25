@@ -32,7 +32,17 @@ install-adwaita-font:
     -iname "*.ttf" \
     -exec sudo cp {} $FONT_PATH \;
 
-install: install-extensions install-extensions-manager install-adwaita-font config
+reload-config:
+  nix build .#config
+  ./result/bin/gnome-config apply
+
+apply-config:
+  gnome-config apply
+
+reset-config:
+  gnome-config reset
+
+install: install-extensions-manager install-adwaita-font config
 
 config:
   nix profile add
