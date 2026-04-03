@@ -11,17 +11,6 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
 
-      focusRecentWindow = pkgs.stdenv.mkDerivation {
-        name = "gnome-focus-recent-window";
-        src = ./bin/gnome-focus-recent-window;
-        dontUnpack = true;
-        installPhase = ''
-          mkdir -p $out/bin
-
-          cp $src $out/bin/gnome-focus-recent-window
-        '';
-      };
-
       config = pkgs.stdenv.mkDerivation {
         name = "gnome-config";
         src = ./.;
@@ -62,11 +51,6 @@
 
     in
     {
-      packages.${system} = {
-        focus-recent-window = focusRecentWindow;
-        inherit config;
-      };
-
       apps.${system} = {
         default = {
           type = "app";
