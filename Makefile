@@ -1,4 +1,4 @@
-ROFI_FLAGS ?= -dpi 144 -x11 -show combi -combi-modes "opwn,urls,util,appl" -normal-window
+ROFI_FLAGS ?= -dpi 144 -x11 -show combi -combi-modes "opwn,appl,urls,util" -normal-window
 GWIN_EXCLUDED_APPLICATIONS ?= chrome|ghostty|discord
 
 export ROFI_FLAGS
@@ -20,6 +20,7 @@ $(OUTPUT): $(TEMPLATES)
 install: $(OUTPUT)
 	@echo "Applying to dconf..."
 	@dconf load / < $(OUTPUT)
+	@echo "Done."
 
 install-font:
 	@./bin/install-adwaita-font
