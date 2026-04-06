@@ -1,3 +1,5 @@
+# vim: set ft=toml:
+
 [org/gnome/desktop/interface]
 clock-format='24h'
 color-scheme='prefer-dark'

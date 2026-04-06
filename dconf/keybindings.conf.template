@@ -1,3 +1,5 @@
+# vim: set ft=toml:
+
 [org/gnome/desktop/wm/keybindings]
 maximize=['<Super>0']
 move-to-monitor-left=['<Shift><Super>bracketleft']
@@ -20,12 +22,12 @@ custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybin
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
 binding='<Super>w'
-command="sh -c 'rofi -dpi 144 -x11 -show combi -combi-modes \"opwn,urls,util,appl\" -normal-window'"
+command="sh -c 'rofi ${ROFI_FLAGS}'"
 name='Rofi combi'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
 binding='<Super>o'
-command="sh -c 'gwin switch --last --exclude \"chrome|ghostty|discord\"'"
+command="sh -c 'gwin switch --last --exclude \"${GWIN_EXCLUDED_APPLICATIONS}\"'"
 name='Switch to last non favorite app'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]

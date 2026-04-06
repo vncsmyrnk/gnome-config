@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# vim: set ft=sh:
+
+FONT_PATH=/usr/local/share/fonts/adwaita
+if [ -d $FONT_PATH ]; then
+  echo "Already installed at $FONT_PATH"
+  exit 0
+fi
+mkdir -p /tmp/adwaita
+sudo mkdir -p $FONT_PATH
+curl -L --output-dir /tmp https://download.gnome.org/sources/adwaita-fonts/48/adwaita-fonts-48.2.tar.xz -o adwaita.tar.xz
+tar -xvf /tmp/adwaita.tar.xz --one-top-level=/tmp/adwaita
+find /tmp/adwaita \
+  -iname "*.ttf" \
+  -exec sudo cp {} $FONT_PATH \;
