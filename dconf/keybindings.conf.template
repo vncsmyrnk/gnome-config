@@ -22,12 +22,12 @@ custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybin
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
 binding='<Super>w'
-command="sh -c 'rofi ${ROFI_FLAGS}'"
+command="sh -c '${MENU}'"
 name='Rofi combi'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
 binding='<Super>o'
-command="sh -c 'gwin switch --last --exclude \"${GWIN_EXCLUDED_APPLICATIONS}\"'"
+command="sh -c '${SWITCH_TO_LATEST_NON_FAVORITE}'"
 name='Switch to last non favorite app'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
