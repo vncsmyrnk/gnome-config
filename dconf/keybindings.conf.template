@@ -18,7 +18,7 @@ play=['<Shift><Super>equal']
 volume-down=['<Super>minus']
 volume-up=['<Super>equal']
 www=['<Alt><Super>w']
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9/']
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
 binding='<Super>bracketright'
@@ -31,36 +31,41 @@ command="sh -c '${MENU}'"
 name='Opens GUI MENU'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
+binding='<Super>w'
+command="sh -c '${MENU}'"
+name='Opens GUI MENU'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3]
 binding='<Super>1'
 command="sh -c 'gwin raise ghostty'"
 name='Raise ghostty'
 
-[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3]
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4]
 binding='<Super>2'
 command="sh -c 'gwin raise chrome'"
 name='Raise chrome'
 
-[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4]
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5]
 binding='<Super>3'
 2ommand="sh -c 'gwin raise discord'"
 name='Raise discord'
 
-[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5]
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6]
 binding='<Super>o'
 command="sh -c '${SWITCH_TO_LATEST_NON_FAVORITE}'"
 name='Switch to last non favorite app'
 
-[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6]
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7]
 binding='<Super>y'
 command="sh -c 'gwin switch --least-recent'"
 name='Switch to least recent application window'
 
-[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7]
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8]
 binding='<Super>j'
 command="sh -c 'gwin switch --last'"
 name='Switch to last application window'
 
-[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8]
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9]
 binding='<Super>k'
 command="sh -c 'gwin switch --last-instance'"
 name='Switch to last instance of the current opened application'
