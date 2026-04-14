@@ -1,13 +1,17 @@
-MENU ?= rofi -dpi 144 -x11 -show combi -combi-modes "opwn,appl,urls,util" -normal-window
+MENU ?= rofi -show combi -combi-modes "opwn,appl,urls,util"
+MENU_JOBS ?= rofi -show jobs
+MENU_FLAGS ?= -dpi 144 -x11 -normal-window
 SWITCH_TO_LATEST_NON_FAVORITE ?= gwin switch --last --exclude "chrome|ghostty|discord"
 
 export MENU
+export MENU_JOBS
+export MENU_FLAGS
 export SWITCH_TO_LATEST_NON_FAVORITE
 
 TEMPLATES = $(wildcard dconf/*.template)
 OUTPUT = settings.dconf
 
-VARS_TO_ESCAPE = MENU SWITCH_TO_LATEST_NON_FAVORITE
+VARS_TO_ESCAPE = MENU MENU_JOBS MENU_FLAGS SWITCH_TO_LATEST_NON_FAVORITE
 
 .PHONY: all install install-font install-extension-manager clean rebuild
 
