@@ -1,10 +1,10 @@
 # vim: set ft=toml:
 
 [org/gnome/desktop/wm/keybindings]
-maximize=['<Super>0']
+maximize=['<Super>9']
 move-to-monitor-left=['<Shift><Super>bracketleft']
 move-to-monitor-right=['<Shift><Super>bracketright']
-unmaximize=['<Super>9']
+unmaximize=['<Super>0']
 switch-applications=@as []
 switch-applications-backward=@as []
 
