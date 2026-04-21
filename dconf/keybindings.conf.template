@@ -46,7 +46,7 @@ command="sh -c 'gwin raise discord.desktop'"
 name='Raise discord'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5]
-binding='<Super>o'
+binding='<Super>comma'
 command="sh -c '${SWITCH_TO_LATEST_NON_FAVORITE}'"
 name='Switch to last non favorite app'
 
