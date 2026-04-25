@@ -57,7 +57,7 @@ name='Switch to least recent application window'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7]
 binding='<Super>j'
-command="sh -c 'gwin switch --index 1'"
+command="sh -c 'gwin switch --index 1 --exclude-focused-application'"
 name='Switch to last application window'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8]
