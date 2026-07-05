@@ -37,8 +37,8 @@ name='Raise ghostty'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3]
 binding='<Super>2'
-command="sh -c 'gwin raise google-chrome.desktop'"
-name='Raise chrome'
+command="sh -c 'gwin raise firefox.desktop'"
+name='Raise firefox'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4]
 binding='<Super>3'
