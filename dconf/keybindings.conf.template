@@ -1,16 +1,16 @@
 # vim: set ft=toml:
 
 [org/gnome/desktop/wm/keybindings]
-maximize=['<Super>9']
-move-to-monitor-left=['<Shift><Super>bracketleft']
-move-to-monitor-right=['<Shift><Super>bracketright']
-unmaximize=['<Super>0']
-switch-applications=@as []
+maximize=['<Super>up']
+move-to-monitor-left=['<Shift><Super>left']
+move-to-monitor-right=['<Shift><Super>right']
+unmaximize=['<Super>down']
+switch-applications=['<Alt>Tab']
 switch-applications-backward=@as []
 
 [org/gnome/mutter/keybindings]
-toggle-tiled-left=['<Super>bracketleft']
-toggle-tiled-right=['<Super>bracketright']
+toggle-tiled-left=['<Super>left']
+toggle-tiled-right=['<Super>right']
 
 [org/gnome/settings-daemon/plugins/media-keys]
 mic-mute=['<Shift><Super>minus']
