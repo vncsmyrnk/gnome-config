@@ -1,4 +1,4 @@
-MENU ?= rofi -show combi -combi-modes "opwn,appl,urls,util"
+MENU ?= rofi -show combi -combi-modes "opwn,appl,jobs,pass,totp,urls,util"
 MENU_JOBS ?= rofi -show jobs
 MENU_FLAGS ?= -dpi 144 -x11 -normal-window
 SWITCH_TO_LATEST_NON_FAVORITE ?= gwin switch --index 1 --exclude "chrome\|ghostty\|discord"
