@@ -72,3 +72,6 @@ switch-to-application-3=@as []
 switch-to-application-9=@as []
 switch-to-application-8=@as []
 toggle-application-view=@as []
+
+[org/gnome/desktop/input-sources]
+xkb-options=['compose:ralt']
