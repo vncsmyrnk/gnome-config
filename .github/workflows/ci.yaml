@@ -1,0 +1,32 @@
+name: CI workflow
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        preset: [preset1, preset1-hq]
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v7
+
+      - name: Bootstrap the build system
+        run: autoreconf --install --force
+
+      - name: Configure
+        run: ./configure --with-preset=${{ matrix.preset }}
+
+      - name: Build
+        run: make
+
+      - name: Verify generated files
+        run: test -f settings.dconf
+
+      - name: Run Distcheck (The Gold Standard)
+        run: make distcheck

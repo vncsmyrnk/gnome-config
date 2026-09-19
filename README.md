@@ -1,11 +1,14 @@
-# My GNOME config
+[![GitHub main branch check runs](https://img.shields.io/github/check-runs/vncsmyrnk/gnome-config/main?style=plastic&logo=github&label=CI%20workflow)](https://github.com/vncsmyrnk/gnome-config/actions/workflows/ci.yaml)
 
 This is my local config for [GNOME](https://www.gnome.org/).
 
 ## Install
 
 ```bash
-make install
+autoreconf -fi
+./configure # optionals available
+sudo make install
+dconf load / <${prefix}/share/gnome-config/settings.dconf
 ```
 
 > [!WARNING]

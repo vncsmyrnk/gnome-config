@@ -1,0 +1,70 @@
+# vim: set ft=toml:
+
+[org/gnome/desktop/wm/keybindings]
+maximize=['<Super>up']
+move-to-monitor-left=['<Shift><Super>left']
+move-to-monitor-right=['<Shift><Super>right']
+unmaximize=['<Super>down']
+switch-applications=['<Alt>Tab']
+switch-applications-backward=@as []
+
+[org/gnome/mutter/keybindings]
+toggle-tiled-left=['<Super>left']
+toggle-tiled-right=['<Super>right']
+
+[org/gnome/settings-daemon/plugins/media-keys]
+mic-mute=['<Shift><Super>minus']
+play=['<Shift><Super>equal']
+volume-down=['<Super>minus']
+volume-up=['<Super>equal']
+www=['<Alt><Super>w']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Super>w'
+command="sh -c '@MENU_CMD@'"
+name='Opens GUI MENU'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='<Super>1'
+command="sh -c '@ACTION1_CMD@'"
+name='Raise application 1'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
+binding='<Super>2'
+command="sh -c '@ACTION2_CMD@'"
+name='Raise application 2'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3]
+binding='<Super>3'
+command="sh -c '@ACTION3_CMD@'"
+name='Raise application 3'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4]
+binding='<Super>comma'
+command="sh -c '@LEAST_NON_FAVORITE_CMD@'"
+name='Switch to last non favorite app'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5]
+binding='<Super>y'
+command="sh -c '@LEAST_RECENT_APPLICATION_WINDOW_CMD@'"
+name='Switch to least recent application window'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6]
+binding='<Super>j'
+command="sh -c '@LAST_APPLICATION_WINDOW_CMD@'"
+name='Switch to last application window'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7]
+binding='<Super>k'
+command="sh -c '@LAST_APPLICATION_INSTANCE_CMD@'"
+name='Switch to last instance of the current opened application'
+
+[org/gnome/shell/keybindings]
+switch-to-application-1=@as []
+switch-to-application-2=@as []
+switch-to-application-3=@as []
+toggle-application-view=@as []
+
+[org/gnome/desktop/input-sources]
+xkb-options=['compose:@COMPOSE_KEY@']
