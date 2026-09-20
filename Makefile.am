@@ -19,6 +19,14 @@ dconf-load.sh: bin/dconf-load.sh.ini
 	sed -e 's|@DATADIR[@]|$(pkgdatadir)/$(GENERATED_FILE)|g' < $< > $@
 	chmod u+x $@
 
+if HAVE_SHELLCHECK
+check-local: dconf-load.sh
+	$(SHELLCHECK) dconf-load.sh
+else
+check-local:
+	@echo "WARNING: shellcheck not found. Skipping linting tests."
+endif
+
 $(GENERATED_FILE): $(DCONF_PARTS)
 	@echo "Concatenating dconf parts..."
 	cat $(DCONF_PARTS) | sed \

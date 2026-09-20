@@ -1,6 +1,9 @@
 AC_INIT([gnome-config], [1.0])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
+AC_PATH_PROG([SHELLCHECK], [shellcheck])
+AM_CONDITIONAL([HAVE_SHELLCHECK], [test -n "$SHELLCHECK"])
+
 AC_PROG_AWK
 AC_PROG_SED
 
