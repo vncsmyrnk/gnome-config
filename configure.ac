@@ -15,7 +15,7 @@ default_action3_cmd="gwin raise discord.desktop"
 default_least_recent_application_window_cmd="gwin switch --index -1"
 default_last_application_window_cmd="gwin switch --index 1 --exclude-focused-application"
 default_last_application_instance_cmd="gwin switch --last-instance"
-default_compose_key="ralt"
+default_compose_key="menu"
 
 sanitize_cmd() {
   printf '%s\n' "$1" | sed \
