@@ -26,7 +26,7 @@ jobs:
         run: make
 
       - name: Verify generated files
-        run: test -f settings.dconf
+        run: test -f settings.ini
 
       - name: Run Distcheck (The Gold Standard)
         run: make distcheck

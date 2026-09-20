@@ -1,4 +1,4 @@
-# vim: set ft=toml:
+# vim: set ft=dosini:
 
 [org/gnome/shell]
 enabled-extensions=['window-calls@domandoman.xyz','argos@pew.worldwidemann.com']

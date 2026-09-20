@@ -1,13 +1,13 @@
 DCONF_PARTS = \
-	dconf/defaults.conf.in \
-	dconf/interface.conf.in \
-	dconf/keybindings.conf.in \
-	dconf/power.conf.in \
-	dconf/shell.conf.in
+	dconf/defaults.ini.in \
+	dconf/interface.ini.in \
+	dconf/keybindings.ini.in \
+	dconf/power.ini.in \
+	dconf/shell.ini.in
 
 EXTRA_DIST = dconf
 
-GENERATED_FILE = settings.dconf
+GENERATED_FILE = settings.ini
 CLEANFILES = $(GENERATED_FILE)
 
 pkgdata_DATA = $(GENERATED_FILE)

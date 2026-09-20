@@ -1,4 +1,4 @@
-# vim: set ft=toml:
+# vim: set ft=dosini:
 
 [org/gnome/desktop/default-applications/terminal]
 exec='ghostty'
