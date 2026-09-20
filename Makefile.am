@@ -5,12 +5,19 @@ DCONF_PARTS = \
 	dconf/power.ini.in \
 	dconf/shell.ini.in
 
-EXTRA_DIST = dconf
+EXTRA_DIST = dconf bin/dconf-load.sh.ini
 
 GENERATED_FILE = settings.ini
 CLEANFILES = $(GENERATED_FILE)
 
 pkgdata_DATA = $(GENERATED_FILE)
+
+nodist_noinst_SCRIPTS = dconf-load.sh
+CLEANFILES += dconf-load.sh
+
+dconf-load.sh: bin/dconf-load.sh.ini
+	sed -e 's|@DATADIR[@]|$(pkgdatadir)/$(GENERATED_FILE)|g' < $< > $@
+	chmod u+x $@
 
 $(GENERATED_FILE): $(DCONF_PARTS)
 	@echo "Concatenating dconf parts..."
@@ -28,5 +35,4 @@ $(GENERATED_FILE): $(DCONF_PARTS)
 		> $@
 
 install-data-hook:
-	@echo "To apply these settings to your user account, run (WITHOUT sudo):"
-	@echo "dconf load / < $(pkgdatadir)/$(GENERATED_FILE)"
+	@echo "To apply these settings to your user account, run (WITHOUT sudo): dconf-load.sh"

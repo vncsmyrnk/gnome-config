@@ -6,9 +6,9 @@ This is my local config for [GNOME](https://www.gnome.org/).
 
 ```bash
 autoreconf -fi
-./configure # optionals available
-sudo make install
-dconf load / <${prefix}/share/gnome-config/settings.dconf
+./configure --prefix=$HOME/.local # optionals available
+make install
+./dconf-load.sh
 ```
 
 > [!WARNING]
