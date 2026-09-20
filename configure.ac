@@ -4,6 +4,7 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_PROG_AWK
 AC_PROG_SED
 
+default_menu_cmd="rofi -show combi -combi-modes \"opwn,appl,pass,totp,jobs,urls,util\" -x11 -normal-window"
 default_least_non_favorite="gwin switch --index 1 --exclude \"chrome\|ghostty\|discord\""
 default_action1_cmd="gwin raise com.mitchellh.ghostty.desktop"
 default_action2_cmd="gwin raise google-chrome.desktop"
@@ -27,10 +28,10 @@ AC_ARG_WITH([preset],
 
 AS_CASE([$preset_choice],
     [preset1], [
-        default_menu_cmd="rofi -show combi -combi-modes \"opwn,appl,urls,util\" -dpi 144 -x11 -normal-window"
+        default_menu_cmd+=" -dpi 144"
     ],
     [preset1-hq], [
-        default_menu_cmd="rofi -show combi -combi-modes \"opwn,appl,urls,util\" -dpi 256 -x11 -normal-window"
+        default_menu_cmd+=" -dpi 256"
     ],
     [*], [
         AC_MSG_ERROR([Invalid preset '$preset_choice'])
