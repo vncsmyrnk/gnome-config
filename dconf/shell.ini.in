@@ -1,7 +1,7 @@
 # vim: set ft=dosini:
 
 [org/gnome/shell]
-enabled-extensions=['window-calls@domandoman.xyz','argos@pew.worldwidemann.com','gfs@vncsmyrnk.dev']
+enabled-extensions=['argos@pew.worldwidemann.com','gfs@vncsmyrnk.dev']
 favorite-apps=['com.mitchellh.ghostty.desktop', 'google-chrome.desktop', 'discord.desktop']
 
 [org/gnome/shell/extensions/gfs]
