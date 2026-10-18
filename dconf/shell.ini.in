@@ -1,5 +1,10 @@
 # vim: set ft=dosini:
 
 [org/gnome/shell]
-enabled-extensions=['window-calls@domandoman.xyz','argos@pew.worldwidemann.com']
+enabled-extensions=['window-calls@domandoman.xyz','argos@pew.worldwidemann.com','gfs@vncsmyrnk.dev']
 favorite-apps=['com.mitchellh.ghostty.desktop', 'google-chrome.desktop', 'discord.desktop']
+
+[org/gnome/shell/extensions/gfs]
+shortcut-1-wm-class='com.mitchellh.ghostty'
+shortcut-2-wm-class='google-chrome'
+shortcut-3-wm-class='discord'
