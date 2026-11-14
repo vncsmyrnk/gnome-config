@@ -18,13 +18,17 @@ play=['<Shift><Super>equal']
 volume-down=['<Super>minus']
 volume-up=['<Super>equal']
 www=['<Alt><Super>w']
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
 binding='<Super>w'
 command="sh -c '@MENU_CMD@'"
 name='Opens GUI MENU'
 
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='<Super>t'
+command="bash -c 'VALUE=$(gsettings get org.gnome.desktop.peripherals.touchpad send-events); gsettings set org.gnome.desktop.peripherals.touchpad send-events $(if [[ \"$VALUE\" =~ \"disabled\" ]]; then echo \"enabled\"; else echo \"disabled\"; fi)'"
+name='Toggles touchpad'
 
 [org/gnome/shell/keybindings]
 toggle-application-view=@as []
